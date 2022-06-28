@@ -1,10 +1,10 @@
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace distributed_calculator.Controllers;
 
 [ApiController]
 [Route("health-check")]
-
 public class HealthCheckController : ControllerBase
 {
     [HttpPost]

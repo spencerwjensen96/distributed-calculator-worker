@@ -18,7 +18,6 @@ app.UseStaticFiles();
 app.UseRouting();
 
 //TODO: cors not working
-app.UseCors(); 
 
 app.MapControllerRoute(
     name: "default",

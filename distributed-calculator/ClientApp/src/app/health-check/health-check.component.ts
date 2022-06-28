@@ -8,11 +8,15 @@ import { HttpClient } from '@angular/common/http';
 export class HealthCheckComponent {
 
   returnMessage: HealthCheckReturn = { Message: '' };
+  errorMessage: string = '';
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.post<HealthCheckReturn>('https://localhost:7000/health-check',{}).subscribe(result => {
+  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  }
+
+  checkAPIHealth() {
+    this.http.post<HealthCheckReturn>('https://localhost:7000/health-check',{}).subscribe(result => {
       this.returnMessage = result;
-    }, error => console.error(error));
+    }, error => this.errorMessage = `POST to health-check failed with message: ${error.message}`);
   }
 }
 
