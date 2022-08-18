@@ -4,7 +4,7 @@
     <label for="hostname">Coordinator Hostname:</label>
     <input type="text" id="hostname" [(ngModel)]="registrationRequest.url" [ngModelOptions]="{standalone: true}">
   </form>
-  <form *ngIf="hostname != ''">
+  <form *ngIf="registrationRequest.url != ''">
     <label for="workerName">Worker Name:</label>
     <input type="text" id="workerName" [(ngModel)]="registrationRequest.workerName" [ngModelOptions]="{standalone: true}">
     <br>

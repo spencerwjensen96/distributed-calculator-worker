@@ -1,5 +1,6 @@
 using distributed_calculator.Controllers;
 using distributed_calculator.CreateJob;
+using distributed_calculator.ErrorCheck;
 using distributed_calculator.Registration;
 using distributed_calculator.Services;
 using Emmersion.Http;
@@ -24,6 +25,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddControllers();
 builder.Services.AddTransient<IRegistrationService, RegistrationService>();
 builder.Services.AddTransient<ICreateJobService, CreateJobService>();
+builder.Services.AddTransient<IErrorCheckService, ErrorCheckService>();
+builder.Services.AddTransient<ICalculator, Calculator>();
 builder.Services.AddTransient<IHttpClient, HttpClient>();
 
 var app = builder.Build();

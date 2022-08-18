@@ -12,9 +12,8 @@ export class RegisterComponent {
   public registrationSuccessful: boolean = false;
   public registrationReturn: RegistrationReturn = {result: ""};
   public registrationRequest: RegistrationRequest = { url: '', id: Guid.create(), workerName: '', createJobEndpoint: 'createJob', errorCheckEndpoint: 'errorCheck'};
-  public hostname: string = "";
   public errorMessage: string = "";
-  isValidHostname: boolean = this.hostname != '';
+  isValidHostname: boolean = this.registrationRequest.url != '';
 
   constructor(private http: HttpClient) {
   }
@@ -22,10 +21,13 @@ export class RegisterComponent {
   registerWorker(){
     this.http.post<RegistrationReturn>(`https://localhost:7000/register`, this.registrationRequest).subscribe(result => {
       this.registrationReturn = result;
-    }, error => this.errorMessage = `Error occured when trying to register at https://${this.hostname}/register. Check your hostname.`);
+    }, error => this.errorMessage = `Error occured when trying to register at https://${this.registrationRequest.url}/register. Check your hostname.`);
     this.errorMessage ? this.registrationSuccessful = true : '';
   }
 
+  changeEndpoint() {
+
+  }
 }
 interface RegistrationRequest{
   url: string;

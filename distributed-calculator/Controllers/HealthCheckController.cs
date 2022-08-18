@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace distributed_calculator.Controllers;
@@ -10,6 +9,7 @@ public class HealthCheckController : ControllerBase
     [HttpGet]
     public ActionResult HealthCheck()
     {
+        Console.WriteLine("Health Check");
         return Ok(new HealthCheckStatus()
         {
             Message = "Passed"

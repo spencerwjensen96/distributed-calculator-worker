@@ -3,15 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace distributed_calculator.Controllers;
 
-
 [ApiController]
 [Route("createJob")]
 
 public class CreateJobController : ControllerBase
 {
-    private readonly CreateJobService _createJobService;
+    private readonly ICreateJobService _createJobService;
 
-    public CreateJobController(CreateJobService createJobService)
+    public CreateJobController(ICreateJobService createJobService)
     {
         _createJobService = createJobService;
     }

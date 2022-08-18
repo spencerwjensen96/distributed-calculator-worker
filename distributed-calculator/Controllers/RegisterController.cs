@@ -1,6 +1,5 @@
 using distributed_calculator.Registration;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 
 namespace distributed_calculator.Controllers;
 
