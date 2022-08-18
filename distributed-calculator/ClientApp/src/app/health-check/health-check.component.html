@@ -1,0 +1,10 @@
+<h1>API Health Check</h1>
+
+<p>This button will check if the Worker API is working.</p>
+
+<button class="btn btn-primary" (click)="checkAPIHealth()">Check Health</button>
+<br/>
+<br/>
+<p class="text-success" *ngIf="returnMessage.message != ''">Health Check: {{returnMessage.message}}</p>
+<br/>
+<p class="text-danger" *ngIf="errorMessage != ''">{{errorMessage}}</p>

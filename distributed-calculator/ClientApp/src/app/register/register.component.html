@@ -1,0 +1,23 @@
+<h1>Register</h1>
+<main>
+  <form>
+    <label for="hostname">Coordinator Hostname:</label>
+    <input type="text" id="hostname" [(ngModel)]="registrationRequest.url" [ngModelOptions]="{standalone: true}">
+  </form>
+  <form *ngIf="hostname != ''">
+    <label for="workerName">Worker Name:</label>
+    <input type="text" id="workerName" [(ngModel)]="registrationRequest.workerName" [ngModelOptions]="{standalone: true}">
+    <br>
+    <p>Worker ID - {{registrationRequest.id}}</p>
+    <p>Create Job Endpoint - {{registrationRequest.createJobEndpoint}}</p>
+    <p>Error Checking Endpoint - {{registrationRequest.errorCheckEndpoint}}</p>
+    <button class="btn btn-primary" (click)="registerWorker()">Register Worker</button>
+  </form>
+
+  <p aria-live="polite" class="text-danger" *ngIf="errorMessage != ''"><strong>{{errorMessage}}</strong></p>
+  <br>
+  <p aria-live="polite" *ngIf="registrationReturn.result != ''"><strong>{{registrationReturn.result}}</strong></p>
+  <br>
+  <p aria-live="polite" class="text-success" *ngIf="registrationSuccessful"><strong>Worker Successfully Registered!</strong></p>
+</main>
+
