@@ -8,16 +8,6 @@ namespace UnitTests.CreateJob;
 
 public class CalculatorTests: With_an_automocked<Calculator>
 {
-    [Test]
-    public async Task When_calculating_request()
-    {
-        var calulation = "CALCULATE: " + RandomString();
-
-        var result = await ClassUnderTest.Calculate(calulation);
-        
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result, Is.EqualTo(result));
-    }
     [TestCase("CALCULATE: 2 + 2", "4")]
     [TestCase("CALCULATE: 2 - 2", "0")]
     [TestCase("CALCULATE: 2 * 2", "4")]
