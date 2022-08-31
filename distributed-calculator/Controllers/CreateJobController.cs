@@ -26,12 +26,24 @@ public class CreateJobController : ControllerBase
 
 public class CreateJobRequest
 {
+    public CreateJobRequest(Guid jobId, string calculation)
+    {
+        JobId = jobId;
+        Calculation = calculation;
+    }
+
     public Guid JobId { get; set; }
     public string Calculation { get; set; }
 }
 
 public class CreateJobResponse
 {
+    public CreateJobResponse(Guid jobId, string result)
+    {
+        JobId = jobId;
+        Result = result;
+    }
+
     public Guid JobId { get; set; }
     public string Result { get; set; }
 }

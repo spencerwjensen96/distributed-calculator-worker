@@ -26,6 +26,12 @@ public class ErrorCheckController : ControllerBase
 
 public class ErrorCheckRequest
 {
+    public ErrorCheckRequest(Guid jobId, string errorMessage)
+    {
+        JobId = jobId;
+        ErrorMessage = errorMessage;
+    }
+
     public Guid JobId { get; set; }
     public string ErrorMessage { get; set; }
 }

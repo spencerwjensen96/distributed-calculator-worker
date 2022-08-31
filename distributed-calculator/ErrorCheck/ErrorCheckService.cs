@@ -9,8 +9,8 @@ public interface IErrorCheckService
 
 public class ErrorCheckService : IErrorCheckService
 {
-    public async Task Execute(ErrorCheckRequest errorCheckRequest)
+    public Task Execute(ErrorCheckRequest errorCheckRequest)
     {
-        
+        return Task.CompletedTask;
     }
 }

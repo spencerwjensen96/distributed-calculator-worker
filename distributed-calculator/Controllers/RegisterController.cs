@@ -25,6 +25,15 @@ public class RegisterController : ControllerBase
 
 public class RegistrationRequest
 {
+    public RegistrationRequest(string url, Guid workerId, string teamName, string createJobEndpoint, string errorCheckEndpoint)
+    {
+        URL = url;
+        WorkerId = workerId;
+        TeamName = teamName;
+        CreateJobEndpoint = createJobEndpoint;
+        ErrorCheckEndpoint = errorCheckEndpoint;
+    }
+
     public string URL { get; set; }
     public Guid WorkerId { get; set; }
     public string TeamName { get; set; }
@@ -34,5 +43,10 @@ public class RegistrationRequest
 
 public class RegistrationResult
 {
+    public RegistrationResult(string result)
+    {
+        Result = result;
+    }
+
     public string Result { get; set; }
 }

@@ -9,6 +9,7 @@ public interface IRegistrationService
 {
     public Task<RegistrationResult> RegisterAsync(RegistrationRequest registrationRequest);
 }
+
 public class RegistrationService : IRegistrationService
 {
     private readonly IHttpClient _httpClient;
@@ -17,6 +18,7 @@ public class RegistrationService : IRegistrationService
     {
         _httpClient = httpClient;
     }
+
     public async Task<RegistrationResult> RegisterAsync(RegistrationRequest registrationRequest)
     {
         var request = new HttpRequest
@@ -35,18 +37,8 @@ public class RegistrationService : IRegistrationService
         {
             throw new Exception("Something went wrong in the registration process.");
         }
-        var returnResponse = new RegistrationResult
-        {
-            Result = response.Body
-        };
+
+        var returnResponse = new RegistrationResult(response.Body);
         return returnResponse;
     }
-}
-
-public class ForwardedRegistrationRequest
-{
-    public Guid WorkerId { get; set; }
-    public string TeamName { get; set; }
-    public string CreateJobEndpoint { get; set; }
-    public string ErrorCheckEndpoint { get; set; }
 }

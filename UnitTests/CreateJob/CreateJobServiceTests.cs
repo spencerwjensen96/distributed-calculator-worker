@@ -14,17 +14,9 @@ public class CreateJobServiceTests : With_an_automocked<CreateJobService>
     [Test]
     public async Task When_creating_a_job()
     {
-        var request = new CreateJobRequest
-        {
-            JobId = NewGuid(),
-            Calculation = RandomString()
-        };
+        var request = new CreateJobRequest(NewGuid(), RandomString());
 
-        var expected = new CreateJobResponse()
-        {
-            JobId = request.JobId,
-            Result = "CALCULATE: " + RandomString()
-        };
+        var expected = new CreateJobResponse(request.JobId, "CALCULATE: " + RandomString());
 
         GetMock<ICalculator>().Setup(x => x.Calculate(request.Calculation)).ReturnsAsync(expected.Result);
 

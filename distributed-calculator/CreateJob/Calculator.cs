@@ -9,7 +9,7 @@ public interface ICalculator
 
 public class Calculator : ICalculator
 {
-    public async Task<String> Calculate(string calculationString)
+    public Task<String> Calculate(string calculationString)
     {
         if (calculationString == null)
         {
@@ -28,6 +28,6 @@ public class Calculator : ICalculator
         {
             throw new Exception("Something went wrong and the result is null.");
         }
-        return result;
+        return Task.FromResult(result);
     }
 }

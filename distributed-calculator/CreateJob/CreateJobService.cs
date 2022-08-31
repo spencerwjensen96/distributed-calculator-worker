@@ -19,11 +19,7 @@ public class CreateJobService : ICreateJobService
     public async Task<CreateJobResponse> CreateJob(CreateJobRequest createJobRequest)
     {
         var calculationResult = await _calculator.Calculate(createJobRequest.Calculation);
-        var response = new CreateJobResponse
-        {
-            JobId = createJobRequest.JobId,
-            Result = calculationResult
-        };
+        var response = new CreateJobResponse(createJobRequest.JobId, calculationResult);
         return response;
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using distributed_calculator.CreateJob;
 using Emmersion.Testing;
@@ -27,14 +28,15 @@ public class CalculatorTests: With_an_automocked<Calculator>
         var calculation = "FACTOR: " + RandomString();
 
         var exception = Assert.ThrowsAsync<Exception>(() => ClassUnderTest.Calculate(calculation));
-        
-        Assert.That(exception.Message, Does.Contain("Unknown calculation command."));
+
+        Assert.That(exception, Is.Not.Null);
+        Assert.That(exception!.Message, Does.Contain("Unknown calculation command."));
     }
     [Test]
     public void When_the_calculation_request_is_null()
     {
         var exception = Assert.ThrowsAsync<NullReferenceException>(() => ClassUnderTest.Calculate(null));
         
-        Assert.That(exception.Message, Does.Contain("Calculation cannot be null"));
+        Assert.That(exception!.Message, Does.Contain("Calculation cannot be null"));
     }
 }
